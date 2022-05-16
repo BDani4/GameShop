@@ -1,5 +1,8 @@
-package hu.nye.progkor.GameShop.model;
+package hu.nye.progkor.gameshop.model;
 
+/**
+ * Game Type.
+ */
 public enum GameType {
 
     FIRST_PERSON_SHOOTER("FPS"), // Belső nézetes, lövöldözős játék

@@ -1,7 +1,10 @@
-package hu.nye.progkor.GameShop.model;
+package hu.nye.progkor.gameshop.model;
 
 import java.util.Objects;
 
+/**
+ * Game.
+ */
 public class Game {
 
     private Long id;
@@ -71,10 +74,17 @@ public class Game {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Game game = (Game) o;
-        return Objects.equals(id, game.id) && Objects.equals(name, game.name) && Objects.equals(releaseYear, game.releaseYear) && Objects.equals(price, game.price) && correspondingGameType == game.correspondingGameType && Objects.equals(description, game.description);
+        return Objects.equals(id, game.id) && Objects.equals(name, game.name)
+                && Objects.equals(releaseYear, game.releaseYear) &&
+                Objects.equals(price, game.price) && correspondingGameType == game.correspondingGameType
+                && Objects.equals(description, game.description);
     }
 
     @Override

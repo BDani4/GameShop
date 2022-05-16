@@ -1,5 +1,8 @@
-package hu.nye.progkor.GameShop.model.exception;
+package hu.nye.progkor.gameshop.model.exception;
 
+/**
+ * Not Found Exception.
+ */
 public class NotFoundException extends RuntimeException {
 
     public NotFoundException() {

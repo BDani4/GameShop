@@ -1,8 +1,12 @@
-package hu.nye.progkor.GameShop.service;
+package hu.nye.progkor.gameshop.service;
 
-import hu.nye.progkor.GameShop.model.Game;
 import java.util.List;
 
+import hu.nye.progkor.gameshop.model.Game;
+
+/**
+ * Game Shop Service.
+ */
 public interface GameShopService {
 
     List<Game> getAllGames();
