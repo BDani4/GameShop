@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Játék létrehozó oldal</title>
+
+  <link rel="stylesheet"
+        th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}"/>
+  <script th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.min.js}"></script>
+</head>
+<body>
+
+<div class="container">
+
+  <h3 class="pt-5">Játék létrehozás</h3>
+
+  <div class="row">
+    <div class="col-md-4 mt-5">
+      <form method="post"
+            th:action="@{/game/create}">
+        <div class="form-group">
+          <label for="name">ID</label>
+          <input type="text"
+                 id="id"
+                 name="id"
+                 readonly
+                 class="form-control"/>
+        </div>
+        <div class="form-group">
+          <label for="name">Név</label>
+          <input type="text"
+                 id="name"
+                 name="name"
+                 class="form-control"/>
+        </div>
+        <div class="form-group">
+          <label for="releaseYear">Megjelenési év</label>
+          <input type="number"
+                 id="releaseYear"
+                 name="releaseYear"
+                 min="1"
+                 step="1"
+                 class="form-control"/>
+        </div>
+        <div class="form-group">
+          <label for="price">Ár</label>
+          <input type="number"
+                 id="price"
+                 name="price"
+                 min="0.5"
+                 step="0.1"
+                 class="form-control"/>
+        </div>
+        <!--<div class="form-group">
+          <label for="gameType">Játék típusa</label>
+          <select id="gameType"
+                  name="gameType"
+                  class="form-control form-select">
+            <option th:value="${T(hu.nye.progkor.warehouse.model.GameType).FIRST_PERSON_SHOOTER}"
+                    th:text="FPS"></option>
+            <option th:value="${T(hu.nye.progkor.warehouse.model.GameType).REAL_TIME_STRATEGY}"
+                    th:text="RTS"></option>
+            <option th:value="${T(hu.nye.progkor.warehouse.model.GameType.HORROR}"
+                    th:text="H"></option>
+          </select>
+        </div>-->
+        <div class="form-group">
+          <label for="description">Leírás</label>
+          <textarea id="description"
+                    th:name="description"
+                    class="form-control"></textarea>
+        </div>
+        <button class="btn btn-primary pt-2"
+                type="submit">Játék készítés
+        </button>
+        <a th:href="@{/game/create}"
+           class="btn btn-secondary pt-2"
+           type="submit">Mégsem</a>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<script>
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Game Creating form</title>
+
+    <link rel="stylesheet"
+          th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}"/>
+    <script th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.min.js}"></script>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-4 mt-5">
+            <form method="post"
+                  th:action="@{/game/update}">
+                <div class="form-group">
+                    <label for="name">Játék modósító adatlap</label>
+                </div>
+                <div class="form-group">
+                    <label for="name">ID</label>
+                    <input type="text"
+                           id="id"
+                           name="id"
+                           readonly
+                           class="form-control"
+                           th:value="${game.id}"/>
+                </div>
+                <div class="form-group">
+                    <label for="name">Név</label>
+                    <input type="text"
+                           id="name"
+                           name="name"
+                           class="form-control"
+                           th:value="${game.name}"/>
+                </div>
+                <div class="form-group">
+                    <label for="releaseYear">Megjelenési év</label>
+                    <input type="number"
+                           id="releaseYear"
+                           name="releaseYear"
+                           min="1"
+                           step="1"
+                           class="form-control"
+                           th:value="${game.releaseYear}"/>
+                </div>
+                <div class="form-group">
+                    <label for="price">Ár</label>
+                    <input type="number"
+                           id="price"
+                           name="price"
+                           min="0.5"
+                           step="0.1"
+                           class="form-control"
+                           th:value="${game.price}"/>
+                </div>
+                <!--<div class="form-group">
+                    <label for="correspondingGameType">Játék Műfaja</label>
+                    <select id="correspondingGameType"
+                            name="correspondingGameType"
+                            class="form-control form-select">
+                        <option th:value="${T(hu.nye.progkor.GameShop.model.GameType).FIRST_PERSON_SHOOTER}"
+                                th:text="FPS"
+                                th:selected="${game.correspondingGameType} == ${T(hu.nye.progkor.GameShop.model.FoodStorageType).FIRST_PERSON_SHOOTER} ? true : false"></option>
+                        <option th:value="${T(hu.nye.progkor.GameShop.model.GameType).REAL_TIME_STRATEGY}"
+                                th:text="RTS"
+                                th:selected="${game.correspondingGameType} == ${T(hu.nye.progkor.GameShop.model.GameType).REAL_TIME_STRATEGY} ? true : false"></option>
+                        <option th:value="${T(hu.nye.progkor.GameShop.model.FoodStorageType).HORROR}"
+                                th:text="H"
+                                th:selected="${game.correspondingGameType} == ${T(hu.nye.progkor.GameShop.model.GameType).HORROR} ? true : false"></option>
+                    </select>
+                </div>-->
+                <div class="form-group">
+                    <label for="description">Leírás</label>
+                    <textarea id="description"
+                              name="description"
+                              rows="4"
+                              spellcheck="false"
+                              class="form-control"
+                              th:text="${game.description}"></textarea>
+                </div>
+                <button class="btn btn-primary"
+                        type="submit">Módosít
+                </button>
+                <a th:href="@{/game}"
+                   class="btn btn-secondary"
+                   type="submit">Mégsem</a>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+</script>
+
+</body>
+</html>
