@@ -39,7 +39,7 @@ jobs:
         # Overwrite local artifact version
         mvn -B versions:set -DnewVersion="$version" --file pom.xml
         mvn -B deploy --file pom.xml
-        cp "target/gameshop-${version}-SNAPSHOT.jar" "target/gameshop.jar"
+        cp "/target/gameshop-${version}-SNAPSHOT.jar" "/target/gameshop.jar"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Log in to the Container registry
