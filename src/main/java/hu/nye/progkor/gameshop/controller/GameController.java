@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- * Game Controller.
+ * Game Controller Java doc comment.
  */
 @Controller
 @RequestMapping("/game")
