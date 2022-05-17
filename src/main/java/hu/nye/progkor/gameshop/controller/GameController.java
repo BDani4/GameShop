@@ -45,7 +45,7 @@ public class GameController {
     /**
      * Lists one game by id.
      */
-    @GetMapping("/{id}")
+    @GetMapping("/game/{id}")
     public String getGame(final Model model, final @PathVariable Long id) {
         final Game game = gameShopService.getGame(id);
         model.addAttribute(GAME_ATTRIBUTE_NAME, game);
@@ -55,7 +55,7 @@ public class GameController {
     /**
      * Updates an already created game.
      */
-    @PostMapping(value = "/update", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @PostMapping(value = "/game/update", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public String updateGame(final Model model,
                              final @RequestParam(value = "id", required = false) Long id,
                              final Game gameChanges) {
@@ -67,7 +67,7 @@ public class GameController {
     /**
      * Creates a new game in the list.
      */
-    @PostMapping(value = "/create")
+    @PostMapping(value = "/game/create")
     public String createGame(final Model model, final Game game) {
         final Game savedGame = gameShopService.createGame(game);
         model.addAttribute(GAME_ATTRIBUTE_NAME, savedGame);
@@ -77,7 +77,7 @@ public class GameController {
     /**
      * Creates a new game in the list.
      */
-    @GetMapping("/create")
+    @GetMapping("/game/create")
     public String createGamePre(final Model model) {
         return "game/create";
     }
@@ -85,7 +85,7 @@ public class GameController {
     /**
      * Deletes a game from the list.
      */
-    @GetMapping("/{id}/delete")
+    @GetMapping("/game/{id}/delete")
     public String deleteGame(final Model model, final @PathVariable("id") Long id) {
         try {
             gameShopService.deleteGame(id);
@@ -93,7 +93,7 @@ public class GameController {
             // Ignored
         }
         final List<Game> games = gameShopService.getAllGames();
-        model.addAttribute("games", games);
+        model.addAttribute(GAME_ATTRIBUTE_NAME, games);
         return GAME_LIST_TEMPLATE_NAME;
     }
 }
