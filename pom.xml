@@ -148,7 +148,7 @@
 		<repository>
 			<id>github</id>
 			<name>GitHub Packages</name>
-			<url>https://maven.pkg.github.com/BDani4/gameshop</url>
+			<url>https://maven.pkg.github.com/bdani4/gameshop</url>
 		</repository>
 	</distributionManagement>
 
