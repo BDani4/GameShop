@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * Game Controller Java doc comment.
  */
 @Controller
-@RequestMapping("/game")
+@RequestMapping
 public class GameController {
 
     private static final String GAME_LIST_TEMPLATE_NAME = "game/list";
