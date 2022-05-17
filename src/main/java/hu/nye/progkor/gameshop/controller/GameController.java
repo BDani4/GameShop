@@ -30,7 +30,7 @@ public class GameController {
     /**
      * Lists all the games.
      */
-    @GetMapping("/list.html")
+    @GetMapping("/list")
     public String getAllGame(final Model model) {
         final List<Game> games = gameShopService.getAllGames();
         model.addAttribute("games", games);
