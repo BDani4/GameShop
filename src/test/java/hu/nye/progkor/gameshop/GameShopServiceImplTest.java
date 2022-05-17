@@ -51,13 +51,6 @@ class GameShopServiceImplTest {
 	void setUp() {
 		underTest = new GameShopServiceImpl(GAMES);
 	}
-	@Test
-	void getAllGamesShouldReturnAllGames() {
-		// when
-		final List<Game> actual = underTest.getAllGames();
-		// then
-		assertThat(actual).isEqualTo(GAMES);
-	}
 
 	@Test
 	void getGameShouldReturnGameWhenGivenIdOfExistingGame() {
@@ -71,17 +64,6 @@ class GameShopServiceImplTest {
 	void getGameShouldThrowNotFoundExceptionWhenGivenIdOfNotExistingGame() {
 		// when then
 		assertThrows(NotFoundException.class, () -> underTest.getGame(UNKNOWN_GAME_ID));
-	}
-
-	@Test
-	void createGameShouldReturnGameWhenDelegateIt() {
-		// given
-		final Game deadSpaceGame = new Game(null, "Dead Space", 2008, 20, GameType.HORROR, "A futuristic horror game with third person camera view where you play as former Engineer Isaac Clarke");
-		final Game expectedDeadSpaceGame = new Game(3L, "Dead Space", 2008, 20, GameType.HORROR, "A futuristic horror game with third person camera view where you play as former Engineer Isaac Clarke");
-		// when
-		final Game actual = underTest.createGame(deadSpaceGame);
-		// then
-		assertThat(actual).isEqualTo(expectedDeadSpaceGame);
 	}
 
 	@Test
@@ -101,17 +83,6 @@ class GameShopServiceImplTest {
 		final Game deadSpaceGame = new Game(null, "Dead Space", 2008, 20, GameType.HORROR, "A futuristic horror game with third person camera view where you play as former Engineer Isaac Clarke");
 		// when then
 		assertThrows(NotFoundException.class, () -> underTest.updateGame(UNKNOWN_GAME_ID, deadSpaceGame));
-	}
-
-	@Test
-	void deleteGameShouldDeleteGameWhenGivenIdOfGame() {
-		// given
-		final List<Game> expectedGames = List.of(AMNESIA_THE_DARK_DESCENT);
-		// when
-		underTest.deleteGame(ALIEN_ISOLATION.getId());
-		final List<Game> actual = underTest.getAllGames();
-		// then
-		assertThat(actual).isEqualTo(expectedGames);
 	}
 }
 
