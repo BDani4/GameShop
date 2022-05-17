@@ -86,10 +86,10 @@
 				</executions>
 				<configuration>
 					<excludes>
-						<exclude>hu\nye\progkor\GameShop\config\**</exclude>
-						<exclude>hu\nye\progkor\GameShop\controller\**</exclude>
-						<exclude>hu\nye\progkor\GameShop\model\**</exclude>
-						<exclude>hu\nye\progkor\GameShop\GameShopApplication.class</exclude>
+						<exclude>hu\nye\progkor\gameshop\config\**</exclude>
+						<exclude>hu\nye\progkor\gameshop\controller\**</exclude>
+						<exclude>hu\nye\progkor\gameshop\model\**</exclude>
+						<exclude>hu\nye\progkor\gameshop\GameShopApplication.class</exclude>
 						<exclude>*Test</exclude>
 					</excludes>
 					<rules>
