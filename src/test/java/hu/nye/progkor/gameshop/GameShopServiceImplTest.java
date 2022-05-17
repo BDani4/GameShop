@@ -67,6 +67,18 @@ class GameShopServiceImplTest {
 	}
 
 	@Test
+	void createGameShouldReturnGameWhenDelegateIt() {
+		// given
+		final Game deadSpaceGame = new Game(null, "Dead Space", 2007, 20, GameType.HORROR,
+						"You play as Isaac Clark, a form engineer in this third person viewed horror game");
+		final Game expectedDeadSpaceGame= new Game(9L, "Dead Space", 2007, 20, GameType.HORROR,
+						"You play as Isaac Clark, a form engineer in this third person viewed horror game");
+		// when
+		final Game actual = underTest.createGame(deadSpaceGame);
+		// then
+		assertThat(actual).isEqualTo(expectedDeadSpaceGame);
+	}
+	@Test
 	void updateGameShouldReturnUpdatedGameWhenGivenIdOfExistingGame() {
 		// given
 		final Game deadSpaceGame = new Game(null, "Dead Space", 2008, 20, GameType.HORROR, "A futuristic horror game with third person camera view where you play as former Engineer Isaac Clarke");
