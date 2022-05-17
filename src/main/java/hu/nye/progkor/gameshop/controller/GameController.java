@@ -23,7 +23,7 @@ public class GameController {
 
     private static final String GAME_LIST_TEMPLATE_NAME = "game/list";
     private static final String GAME_EDIT_TEMPLATE_NAME = "game/edit";
-    private static final String GAME_ATTRIBUTE_NAME = "game";
+    private static final String GAME_ATTRIBUTE_NAME = "games";
 
 
     private final GameShopService gameShopService;
