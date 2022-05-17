@@ -48,7 +48,9 @@ public class GameController {
     @GetMapping("/game/{id}")
     public String getGame(final Model model, final @PathVariable Long id) {
         final Game game = gameShopService.getGame(id);
+        System.out.println(game);
         model.addAttribute(GAME_ATTRIBUTE_NAME, game);
+        System.out.println("123");
         return GAME_EDIT_TEMPLATE_NAME;
     }
 

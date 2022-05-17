@@ -27,38 +27,38 @@
                     <label for="name">ID</label>
                     <input type="text"
                            id="id"
-                           name="id"
+                           th:name="id"
                            readonly
                            class="form-control"
-                           th:value="${game.id}"/>
+                           th:value="${games.id}"/>
                 </div>
                 <div class="form-group">
                     <label for="name">Név</label>
                     <input type="text"
                            id="name"
-                           name="name"
+                           th:name="name"
                            class="form-control"
-                           th:value="${game.name}"/>
+                           th:value="${games.name}"/>
                 </div>
                 <div class="form-group">
                     <label for="releaseYear">Megjelenési év</label>
                     <input type="number"
                            id="releaseYear"
-                           name="releaseYear"
+                           th:name="releaseYear"
                            min="1"
                            step="1"
                            class="form-control"
-                           th:value="${game.releaseYear}"/>
+                           th:value="${games.releaseYear}"/>
                 </div>
                 <div class="form-group">
                     <label for="price">Ár</label>
                     <input type="number"
                            id="price"
-                           name="price"
+                           th:name="price"
                            min="0.5"
                            step="0.1"
                            class="form-control"
-                           th:value="${game.price}"/>
+                           th:value="${games.price}"/>
                 </div>
                 <!--<div class="form-group">
                     <label for="correspondingGameType">Játék Műfaja</label>
@@ -79,16 +79,16 @@
                 <div class="form-group">
                     <label for="description">Leírás</label>
                     <textarea id="description"
-                              name="description"
+                              th:name="description"
                               rows="4"
                               spellcheck="false"
                               class="form-control"
-                              th:text="${game.description}"></textarea>
+                              th:text="${games.description}"></textarea>
                 </div>
                 <button class="btn btn-primary"
                         type="submit">Módosít
                 </button>
-                <a th:href="@{/game}"
+                <a th:href="@{/}"
                    class="btn btn-secondary"
                    type="submit">Mégsem</a>
             </form>
