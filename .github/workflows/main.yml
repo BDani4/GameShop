@@ -6,11 +6,11 @@ name: Main workflow
 on:
   push:
     branches: [ main ]
-    
+
 env:
   DOCKER_REGISTRY: ghcr.io
   DOCKER_IMAGE_NAME: ${{ github.repository }}
-  HEROKU_APP_NAME: 'hu-nye-progkorny-gameshop'
+  HEROKU_APP_NAME: 'hu-nye-progkor-gameshop'
 
 jobs:
   build:
@@ -58,7 +58,7 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
       with:
-        context: /
+        context: .
         push: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
@@ -82,11 +82,11 @@ jobs:
       - name: Get image from packages, tag and push to Heroku
         run: |
           docker pull ghcr.io/BDani4/GameShop:${{ env.ARTIFACT_VERSION }}
-          docker tag ghcr.io/BDani4/GameShop:${{ env.ARTIFACT_VERSION }} registry.heroku.com/${{ env.HEROKU_APP_NAME }}
-          docker push registry.heroku.com/${{ env.HEROKU_APP_NAME }}
+          docker tag ghcr.io/BDani4/GameShop:${{ env.ARTIFACT_VERSION }} registry.heroku.com/${{ env.HEROKU_APP_NAME }}/web
+          docker push registry.heroku.com/${{ env.HEROKU_APP_NAME }}/web
         env:
           ARTIFACT_VERSION: ${{ needs.build.outputs.artifactVersion }}
       - name: Release app on Heroku
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku container:release -a ${{ env.HEROKU_APP_NAME }}
+        run: heroku container:release -a ${{ env.HEROKU_APP_NAME }} web
