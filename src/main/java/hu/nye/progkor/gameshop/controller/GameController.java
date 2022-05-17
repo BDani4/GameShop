@@ -21,6 +21,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/game")
 public class GameController {
 
+    private static final String GAME_LIST_TEMPLATE_NAME = "game/list";
+    private static final String GAME_EDIT_TEMPLATE_NAME = "game/edit";
+    private static final String GAME_ATTRIBUTE_NAME = "game";
+
+
     private final GameShopService gameShopService;
 
     public GameController(final GameShopService gameShopService) {
@@ -33,8 +38,8 @@ public class GameController {
     @GetMapping("/list")
     public String getAllGame(final Model model) {
         final List<Game> games = gameShopService.getAllGames();
-        model.addAttribute("games", games);
-        return "/game/list";
+        model.addAttribute(GAME_ATTRIBUTE_NAME, games);
+        return GAME_LIST_TEMPLATE_NAME;
     }
 
     /**
@@ -43,20 +48,20 @@ public class GameController {
     @GetMapping("/{id}")
     public String getGame(final Model model, final @PathVariable Long id) {
         final Game game = gameShopService.getGame(id);
-        model.addAttribute("game", game);
-        return "/game/edit";
+        model.addAttribute(GAME_ATTRIBUTE_NAME, game);
+        return GAME_EDIT_TEMPLATE_NAME;
     }
 
     /**
      * Updates an already created game.
      */
     @PostMapping(value = "/update", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public String createGame(final Model model,
+    public String updateGame(final Model model,
                              final @RequestParam(value = "id", required = false) Long id,
                              final Game gameChanges) {
         final Game game = gameShopService.updateGame(id, gameChanges);
-        model.addAttribute("game", game);
-        return "/game/edit";
+        model.addAttribute(GAME_ATTRIBUTE_NAME, game);
+        return GAME_EDIT_TEMPLATE_NAME;
     }
 
     /**
@@ -65,8 +70,8 @@ public class GameController {
     @PostMapping(value = "/create")
     public String createGame(final Model model, final Game game) {
         final Game savedGame = gameShopService.createGame(game);
-        model.addAttribute("game", savedGame);
-        return "game/edit";
+        model.addAttribute(GAME_ATTRIBUTE_NAME, savedGame);
+        return GAME_EDIT_TEMPLATE_NAME;
     }
 
     /**
@@ -89,6 +94,6 @@ public class GameController {
         }
         final List<Game> games = gameShopService.getAllGames();
         model.addAttribute("games", games);
-        return "/game/list";
+        return GAME_LIST_TEMPLATE_NAME;
     }
 }
