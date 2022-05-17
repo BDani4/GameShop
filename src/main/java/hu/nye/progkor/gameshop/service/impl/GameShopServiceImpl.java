@@ -8,6 +8,7 @@ import hu.nye.progkor.gameshop.model.Game;
 import hu.nye.progkor.gameshop.model.GameType;
 import hu.nye.progkor.gameshop.model.exception.NotFoundException;
 import hu.nye.progkor.gameshop.service.GameShopService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -18,7 +19,8 @@ public class GameShopServiceImpl implements GameShopService {
 
     private static final List<Game> DATA_BASE = new ArrayList<>();
 
-    static {
+    @Autowired
+    public GameShopServiceImpl() {
         DATA_BASE.add(new Game(1L, "Starcraft", 1998, 10, GameType.REAL_TIME_STRATEGY,
                 "A futuristic strategy game where you face off against a human or an AI and try to overpower them and win."));
         DATA_BASE.add(new Game(2L, "Warcraft 3", 2002, 30, GameType.REAL_TIME_STRATEGY,
@@ -36,6 +38,10 @@ public class GameShopServiceImpl implements GameShopService {
         DATA_BASE.add(new Game(8L, "Alien: Isolation", 2014, 20, GameType.HORROR,
                 "You play as Amanda Ripley, and you investigate the disappearance of your mother Ellen Ripley on the ship of Sevastopol."));
         }
+
+    public GameShopServiceImpl(final List<Game> games) {
+        DATA_BASE.addAll(games);
+    }
 
     @Override
     public List<Game> getAllGames() {
